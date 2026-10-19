@@ -1,0 +1,23 @@
+\begin{table}[ht]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}l*{5}{c}cc*{5}{c}c@{}}
+\toprule
+& $d_f$ & $d_w$ & $d_b$ & $w$ & $\theta$ & $\ell$ & $R$ & $n=1$ & $n=2$ & $n=3$ & $n=4$ & $n=5$ & $K$\\
+\midrule
+City car & 0.65 & 2.35 & 0.55 & 1.65 & $37^\circ$ & 3.55 & 3.12 & 4.910 & 4.517 & 4.311 & 4.222 & 4.132 & 4.51\\
+Compact & 0.85 & 2.60 & 0.75 & 1.78 & $36^\circ$ & 4.20 & 3.58 & 5.686 & 5.271 & 5.126 & 5.024 & 4.911 & 5.02\\
+Typical & 0.90 & 2.60 & 0.80 & 1.80 & $35^\circ$ & 4.30 & 3.71 & 5.833 & 5.411 & 5.280 & 5.180 & 5.050 & 5.15\\
+Mid-size sedan & 0.95 & 2.85 & 1.00 & 1.84 & $34^\circ$ & 4.80 & 4.23 & 6.452 & 6.052$^{*}$ & 5.926 & 5.844 & 5.744 & 5.55\\
+Large SUV & 1.00 & 3.00 & 1.05 & 1.98 & $33^\circ$ & 5.05 & 4.62 & 6.877 & 6.393$^{*}$ & 6.288 & 6.187 & 6.069 & 6.03\\
+Van & 1.00 & 3.40 & 1.10 & 2.00 & $31^\circ$ & 5.50 & 5.66 & 7.543 & 6.969$^{*}$ & 6.850 & 6.734 & 6.597 & 6.71\\
+\bottomrule
+\end{tabular}
+\caption{Slot lengths (in metres) for parallel parking with $n$ manoeuvres, for six car configurations with margin $m=w/10$.
+The column $n=1$ is the exact value $\Lmin(1)=\Lambda_1$ of \cref{thm:one}.
+The column $n=2$ is $\Lambda_2^*$ from \cref{prop:two-better}; entries marked $^*$ are numerical, because there the double contact occurs before the rear corner passes the bottom of its circle ($\alpha_1<\beta$, cf.\ \cref{rem:two-other}).
+The columns $n=3,4,5$ are the best rotation zigzags found.
+All entries with $n\ge2$ are upper bounds for $\Lmin(n)$.
+For large $n$, $\Lmin(n)=\ell+K/\sqrt n+o(n^{-1/2})$ by \cref{thm:asym}.}
+\label{tab:cars}
+\end{table}

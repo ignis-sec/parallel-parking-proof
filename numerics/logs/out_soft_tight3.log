@@ -1,0 +1,9 @@
+n=3 L=5.05882: slack -0.05699 ok False
+n=3 L=5.07382: slack -0.02721 ok False
+n=3 L=5.08132: slack -0.01231 ok False
+n=3 L=5.08507: slack -0.00486 ok False
+n=3 L=5.08694: slack -0.00114 ok False
+n=3 L=5.08788: slack 0.00072 ok True
+n=3 L=5.08741: slack -0.00021 ok False
+n=3 L=5.08764: slack 0.00026 ok True
+RESULT 3 5.0876445292421 [0.0, 1.0, 0.0, 1.0]

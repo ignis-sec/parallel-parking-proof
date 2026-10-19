@@ -1,0 +1,104 @@
+\section{Formal verification in Lean}\label{sec:lean}
+
+The model and a large part of the results have been formalised in Lean~4 (version 4.35.0) with the Mathlib library (tag \texttt{v4.35.0}).
+The development is in the directory \texttt{lean/} that accompanies this paper.
+It has about 4400 lines in 19 files, builds with \texttt{lake build} (the separate file \texttt{AsymAxiom.lean} with \texttt{lake build Parking.AsymAxiom}), and contains no \texttt{sorry}.
+This section explains what is verified, how the formal statements relate to the ones in the paper, and which parts are assumed.
+
+\subsection{The formal model}
+The file \texttt{Model.lean} transcribes \cref{sec:model}.
+A \texttt{Car} carries $d_f,d_w,d_b,w,\theta$ with positivity and $\theta<\pi/2$.
+A \texttt{Config} is a triple $(x,y,\psi)$, and the footprint is the image of $[-d_b,b]\times[-\frac w2,\frac w2]$ under the rigid motion.
+The obstacles are the open sets of \cref{sec:model}: the curb half-plane $\{y<0\}$ and the two parked cars $\{x<0,\ m<y<H\}$ and $\{x>L,\ m<y<H\}$.
+\texttt{Free}, \texttt{Parked} and \texttt{InLane} are the three classes of configurations, with \texttt{InLane} requiring the whole footprint in $\{y\ge H\}$ and $\psi\in\pi\mathbb Z$.
+
+A \texttt{Manoeuvre} consists of a direction $d=\pm1$, a length $S\ge0$, an initial point, and a heading $\psi:\R\to\R$ with $|\psi(s)-\psi(t)|\le|s-t|/R$.
+The position is defined by $P(s)=P(0)+d\int_0^s\e(\psi(\sigma))\dd\sigma$.
+This is \cref{def:manoeuvre}: a heading is $1/R$-Lipschitz exactly when it is absolutely continuous with $|\psi'|\le1/R$ almost everywhere.
+A parking motion is a list of at most $n$ manoeuvres with matching end points, all of whose configurations are free, starting in the lane and ending parked.
+\texttt{Feasible c m n L} states that one exists, and $\Lmin(n)$ is defined as $\inf\{L>0:\ \texttt{Feasible c m n L}\}$.
+Lean's real infimum of the empty set is $0$, not $+\infty$.
+This is why the formal monotonicity statements below carry the hypothesis that some slot is feasible for the smaller number of manoeuvres.
+
+\subsection{What is verified}
+\Cref{tab:lean} lists the correspondence.
+All theorems in its upper part depend only on the three standard axioms of Lean and Mathlib (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}), as reported by \texttt{\#print axioms}.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.31\textwidth}>{\raggedright\arraybackslash}p{0.37\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}@{}}
+\toprule
+Paper & Lean & Status\\
+\midrule
+\cref{lem:reversal} (time reversal) & \texttt{Manoeuvre.reverse}, \texttt{reverse\_config} & proved for single manoeuvres\\
+\cref{lem:monoL} (monotonicity) & \texttt{Feasible.mono\_L}, \texttt{Feasible.mono\_n}, \texttt{Lmin\_antitone} & proved\\
+\cref{lem:mirror,lem:fit} & \texttt{Manoeuvre.mirror}, \texttt{Manoeuvre.shift}, \texttt{OneAssumptions.heading\_near} & proved (\cref{lem:fit} under \cref{ass:one})\\
+\cref{prop:flush} (zero margin) & \texttt{not\_feasible\_zero\_margin} & proved\\
+\cref{lem:distance} (distance identity) & \texttt{Manoeuvre.distSq\_incr} & proved (increment form)\\
+\cref{prop:one-upper} & \texttt{feasible\_one\_at\_}$\Lambda_1$ & proved\\
+\cref{prop:one-forward} & \texttt{exit\_forward\_lower} & proved\\
+\cref{prop:one-reverse} & \texttt{exit\_reverse\_lower} & proved, in the form $L\ge\Lambda_1$ under \cref{ass:one}\\
+\cref{thm:one} & \texttt{feasible\_one\_iff}, \texttt{Lmin\_one} & proved, under slightly stronger hypotheses (see text)\\
+$K^2=\int_0^w\dd u/r_*(u)$ & \texttt{K\_sq\_eq} & proved\\
+pointwise calibration inequality; the integral and area identities behind \cref{lem:calib,lem:loop} & \texttt{calib\_pointwise}, \texttt{calib\_integral}, \texttt{loop\_area} & proved\\
+\midrule
+\cref{thm:asym} & \texttt{asym} & proved from \texttt{AsymLower}, \texttt{AsymUpper}\\
+\cref{thm:mono} ($\Lmin(n)>\ell$ when some slot is feasible, $\Lmin(n)\to\ell$) & \texttt{len\_lt\_Lmin}, \texttt{Lmin\_tendsto} & proved from \texttt{AsymLower} (and \texttt{AsymUpper} for the limit)\\
+\cref{prop:asym-lower,prop:asym-upper} & \texttt{AsymLower}, \texttt{AsymUpper} & stated, not proved\\
+\cref{sec:several} (few manoeuvres) & --- & not formalised\\
+\bottomrule
+\end{tabular}
+\caption{Results of the paper and their formal counterparts.}
+\label{tab:lean}
+\end{table}
+
+\paragraph{The one-manoeuvre theorem.}
+\Cref{ass:one} is the structure \texttt{OneAssumptions c m}.
+It carries the auxiliary angles $\psi_{\rm fit},\psi_b,\psi_d,\gamma,\beta,\psi_n,\psi_u$ as data together with their defining equations, and the inequalities (A1)--(A7) as fields.
+The structure is slightly stronger than \cref{ass:one}.
+It also contains the standing assumptions $R>w/2$ and $m>0$, and the inequality $\psi_d\le\psi_{\rm fit}$, which the paper derives from \cref{prop:one-upper,lem:fit}.
+In \ref{A:far} it uses $\log$ instead of $\log^+$ in \eqref{eq:Bback} and requires $Hb>\ell h_0$, so that the two agree.
+These extra conditions hold for all cars considered in this paper.
+The formal theorem is
+\begin{align*}
+  &\texttt{theorem feasible\_one\_iff (A : OneAssumptions c m) (L :}\ \R\texttt{) :}\\
+  &\qquad\texttt{Feasible c m 1 L}\ \iff\ \texttt{A.}\Lambda_1\le\texttt{L},
+\end{align*}
+with $\texttt{A.}\Lambda_1=X(\psi_d)+\sqrt{\rho^2-(r-H)^2}$ as in \eqref{eq:Lambda1def}, and \texttt{Lmin\_one} gives $\Lmin(1)=\Lambda_1$.
+The proof follows \cref{sec:one} step by step: the explicit exit, the normalisation by \cref{lem:mirror,lem:fit}, the forward bound with its nine steps, and the reverse bound.
+Checking that a particular car satisfies \cref{ass:one} is a numerical computation (\cref{app:assumptions}) and is not part of the formal development.
+
+Two technical choices differ from the written proofs, without changing the mathematics.
+First, since the heading is only Lipschitz, derivative arguments along a manoeuvre are replaced by a Dini-type criterion.
+A continuous function whose increments satisfy $f(z)-f(s)\le M_s(z-s)^2$ for $z>s$ is non-increasing.
+For example, \cref{lem:distance} is used in the form
+\[
+  |C(z)-Q|^2-|C(s)-Q|^2\le 2\,(P(s)-Q)\cdot\e(\psi(s))\,\big(d(z-s)-R\sin(\psi(z)-\psi(s))\big)+M_s(z-s)^2 .
+\]
+Second, in \cref{prop:one-reverse} the Gronwall estimate together with the measure $S_-$ of the set of times with $\psi<0$ is replaced by a single monotone quantity.
+For every $\varepsilon>0$ the function $P_x+c_\psi\frac{Rb}{\Rp}\log(h+\varepsilon)$ is non-increasing on $[0,\tau_r]$.
+Letting $\varepsilon\to0$ gives the bound of the paper, with $\log$ in place of $\log^+$; this is where the condition $Hb>\ell h_0$ enters.
+
+\paragraph{The asymptotic theorem.}
+\Cref{prop:asym-lower,prop:asym-upper} are not formalised.
+Their proofs rest on the confinement lemma, the exact description of the free windows, the calibration with all its error terms, and the construction of tilted S-curves with $O(g^2)$ tracking estimates.
+These are long perturbation arguments, uniform in the slack $g$, with many constants, and formalising them would be a project of its own.
+In Lean the two propositions are the predicates
+\begin{align*}
+  \texttt{AsymLower c m}&:\ \forall\varepsilon>0\ \exists g_0>0\ \forall g\in(0,g_0]\ \forall n,\ \texttt{Feasible c m n }(\ell+g)\Rightarrow K^2-\varepsilon\le g^2n,\\
+  \texttt{AsymUpper c m}&:\ \forall\varepsilon>0\ \exists g_0>0\ \forall g\in(0,g_0]\ \exists n,\ g^2n\le K^2+\varepsilon\ \wedge\ \texttt{Feasible c m n }(\ell+g),
+\end{align*}
+i.e.\ $\liminf_{g\downarrow0}g^2N(g)\ge K^2$ and $\limsup_{g\downarrow0}g^2N(g)\le K^2$.
+Theorem \texttt{asym} derives $\sqrt n\,(\Lmin(n)-\ell)\to K$ from these two hypotheses and the hypotheses of \cref{thm:asym}.
+Theorem \texttt{len\_lt\_Lmin} derives $\ell<\Lmin(n)$ from \texttt{AsymLower} alone, for every $n$ for which some slot is feasible, and \texttt{Lmin\_tendsto} derives $\Lmin(n)\to\ell$ from both hypotheses.
+The inequality $\Lmin(n)\le\Lmin(1)$ follows from \texttt{Lmin\_antitone} once some slot is feasible with one manoeuvre.
+Parts of the analytic core of the two propositions are proved: the identity $K^2=\int_0^w\dd u/r_*(u)=4Rw-w^3/(6R)$, the pointwise calibration inequality, the integral identity $\int_0^1\big(s_+(\frac12-\zeta)^++s_-(\zeta-\frac12)^+\big)\dd\zeta=(s_++s_-)/8$ behind its integrated form, and the corresponding area identity for the ideal loop.
+
+For readers who want the unconditional statements, the separate file \texttt{AsymAxiom.lean} declares a single, clearly labelled axiom \texttt{paper\_asym\_bounds}.
+It asserts the two propositions under the hypotheses of \cref{thm:asym}.
+From it the file derives \texttt{thm\_asym}, \texttt{thm\_mono\_limit} and \texttt{thm\_mono\_gt} (the last still with the feasibility hypothesis), and \texttt{\#print axioms} lists \texttt{paper\_asym\_bounds} for exactly these three theorems.
+No other file imports it.
+
+\paragraph{Not formalised.}
+The two-manoeuvre constructions of \cref{sec:several} and all numerical values are not formalised.
+Neither is the soft-curb variant of \cref{sec:soft,sec:compare}.

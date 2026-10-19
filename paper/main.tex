@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{graphicx,xcolor,booktabs,enumitem,array}
+\usepackage[hidelinks]{hyperref}
+\usepackage[capitalise,nameinlink]{cleveref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+% ---- notation ----
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\n}{\mathbf{n}}
+\newcommand{\Rp}{R_{+}}
+\newcommand{\Rm}{R_{-}}
+\newcommand{\Rpm}{R_{\pm}}
+\newcommand{\Lmin}{L_{\min}}
+\newcommand{\fp}{\mathcal{K}}          % footprint
+\newcommand{\cRC}{\mathsf{RC}}         % rear corner, curb side
+\newcommand{\cFC}{\mathsf{FC}}         % front corner, curb side
+\newcommand{\cFL}{\mathsf{FL}}         % front corner, lane side
+\newcommand{\cRL}{\mathsf{RL}}         % rear corner, lane side
+\newcommand{\Qf}{Q_{\mathrm f}}
+\newcommand{\Qr}{Q_{\mathrm r}}
+\newcommand{\Of}{\mathcal{O}_{\mathrm f}}
+\newcommand{\Or}{\mathcal{O}_{\mathrm r}}
+\newcommand{\Free}{\mathcal{F}_L}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\Lmins}{L^{\mathrm s}_{\min}}  % soft curb
+\newcommand{\cTr}{\mathsf{T_r}}          % outer rear corner of the curb-side rear tyre
+\newcommand{\cTf}{\mathsf{T_f}}          % outer front corner of the curb-side front tyre
+\newcommand{\W}{\mathcal{W}}             % tyre footprints
+\DeclareMathOperator{\sgn}{sgn}
+
+\title{How long must a parallel-parking space be?\\[2pt]
+\large Exact one-manoeuvre length, two-manoeuvre strategies, and sharp many-manoeuvre asymptotics}
+\author{Ata Hakçıl}
+\date{}
+
+\begin{document}
+\maketitle
+\input{sections/abstract}
+\tableofcontents
+\input{sections/intro}
+\input{sections/model}
+\input{sections/toolkit}
+\input{sections/one}
+\input{sections/several}
+\input{sections/asymptotics}
+\input{sections/asymptotics2}
+\input{sections/soft}
+\input{sections/compare}
+\input{sections/lean}
+\input{sections/discussion}
+\appendix
+\input{sections/appendix}
+\input{sections/biblio}
+\end{document}

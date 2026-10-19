@@ -1,0 +1,10 @@
+ds=0.00 cm lam=0.20: closed 5.8156 (hyp True), numerical 5.8156 at psi=0.0493 (psi_t=0.0493)
+ds=0.00 cm lam=0.25: closed 5.8163 (hyp False), numerical 5.8164 at psi=0.0485 (psi_t=0.0486)
+ds=0.00 cm lam=0.30: closed 5.8170 (hyp False), numerical 5.8172 at psi=0.0477 (psi_t=0.0479)
+ds=2.75 cm lam=0.20: closed 5.8080 (hyp True), numerical 5.8080 at psi=0.0569 (psi_t=0.0569)
+ds=2.75 cm lam=0.25: closed 5.8088 (hyp True), numerical 5.8088 at psi=0.0561 (psi_t=0.0561)
+ds=2.75 cm lam=0.30: closed 5.8096 (hyp False), numerical 5.8097 at psi=0.0552 (psi_t=0.0553)
+ds=5.00 cm lam=0.20: closed 5.8017 (hyp True), numerical 5.8017 at psi=0.0631 (psi_t=0.0631)
+ds=5.00 cm lam=0.25: closed 5.8025 (hyp True), numerical 5.8025 at psi=0.0623 (psi_t=0.0623)
+ds=5.00 cm lam=0.30: closed 5.8034 (hyp False), numerical 5.8035 at psi=0.0614 (psi_t=0.0614)
+range of the numerical values: 5.8017 - 5.8172, spread 1.55 cm

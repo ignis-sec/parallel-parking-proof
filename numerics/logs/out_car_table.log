@@ -1,0 +1,107 @@
+City car {'A1': True, 'A2': True, 'A3': True, 'A4': True, 'A5': True, 'A6': True, 'A7': True} Lam1 4.91018990304252
+   Lambda2*=4.5170 a0=0.0241 a1=0.2117 hyp=True sim=True
+   n=3 it=0 L=4.0335 --
+   n=3 it=1 L=4.2752 --
+   n=3 it=2 L=4.3961 ok
+   n=3 it=3 L=4.3357 ok
+   n=3 it=4 L=4.3054 --
+   n=3 it=5 L=4.3206 ok
+   n=3 it=6 L=4.3130 ok
+   n=3 it=7 L=4.3092 --
+   n=3 it=8 L=4.3111 ok
+   n=3 it=9 L=4.3102 ok
+   n=4 it=0 L=3.9301 --
+   n=4 it=1 L=4.1201 --
+   n=4 it=2 L=4.2151 --
+   n=4 it=3 L=4.2627 ok
+   n=4 it=4 L=4.2389 ok
+   n=4 it=5 L=4.2270 ok
+   n=4 it=6 L=4.2211 --
+   n=4 it=7 L=4.2241 ok
+   n=4 it=8 L=4.2226 ok
+   n=4 it=9 L=4.2218 ok
+   n=5 it=0 L=3.8859 --
+   n=5 it=1 L=4.0539 --
+   n=5 it=2 L=4.1378 ok
+   n=5 it=3 L=4.0959 --
+   n=5 it=4 L=4.1169 --
+   n=5 it=5 L=4.1274 --
+   n=5 it=6 L=4.1326 ok
+   n=5 it=7 L=4.1300 --
+   n=5 it=8 L=4.1313 ok
+   n=5 it=9 L=4.1306 --
+  done City car {'L1': 4.91018990304252, 'L2': 4.5169682774064785, 'L3': 4.310165491515835, 'L4': 4.221825947091631, 'L5': 4.131286903440611} 517 s
+Compact {'A1': True, 'A2': True, 'A3': True, 'A4': True, 'A5': True, 'A6': True, 'A7': True} Lam1 5.685665523011627
+   Lambda2*=5.2701 a0=0.0369 a1=0.1842 hyp=True sim=True
+   n=3 it=0 L=4.7351 --
+   n=3 it=1 L=5.0026 --
+   n=3 it=2 L=5.1364 ok
+   n=3 it=3 L=5.0695 --
+   n=3 it=4 L=5.1029 --
+   n=3 it=5 L=5.1196 --
+   n=3 it=6 L=5.1280 ok
+   n=3 it=7 L=5.1238 --
+   n=3 it=8 L=5.1259 ok
+   n=3 it=9 L=5.1249 --
+   n=4 it=0 L=4.6630 --
+   n=4 it=1 L=4.8944 --
+   n=4 it=2 L=5.0102 --
+   n=4 it=3 L=5.0680 ok
+   n=4 it=4 L=5.0391 ok
+   n=4 it=5 L=5.0246 ok
+   n=4 it=6 L=5.0174 --
+   n=4 it=7 L=5.0210 --
+   n=4 it=8 L=5.0228 --
+   n=4 it=9 L=5.0237 ok
+   n=5 it=0 L=4.6119 --
+   n=5 it=1 L=4.8178 --
+   n=5 it=2 L=4.9208 ok
+   n=5 it=3 L=4.8693 --
+   n=5 it=4 L=4.8950 --
+   n=5 it=5 L=4.9079 --
+   n=5 it=6 L=4.9143 ok
+   n=5 it=7 L=4.9111 ok
+   n=5 it=8 L=4.9095 --
+   n=5 it=9 L=4.9103 ok
+  done Compact {'L1': 5.685665523011627, 'L2': 5.270119711264127, 'L3': 5.125904359550798, 'L4': 5.023729366748807, 'L5': 4.910305694178903} 431 s
+Typical {'A1': True, 'A2': True, 'A3': True, 'A4': True, 'A5': True, 'A6': True, 'A7': True} Lam1 5.8329509733913625
+   Lambda2*=5.4104 a0=0.0412 a1=0.1781 hyp=True sim=True
+   n=3 it=0 L=4.8552 --
+   n=3 it=1 L=5.1328 --
+   n=3 it=2 L=5.2716 --
+   n=3 it=3 L=5.3410 ok
+   n=3 it=4 L=5.3063 ok
+   n=3 it=5 L=5.2890 ok
+   n=3 it=6 L=5.2803 ok
+   n=3 it=7 L=5.2760 --
+   n=3 it=8 L=5.2781 --
+   n=3 it=9 L=5.2792 ok
+   n=4 it=0 L=4.7896 --
+   n=4 it=1 L=5.0344 --
+   n=4 it=2 L=5.1568 --
+   n=4 it=3 L=5.2180 ok
+   n=4 it=4 L=5.1874 ok
+   n=4 it=5 L=5.1721 --
+   n=4 it=6 L=5.1798 ok
+   n=4 it=7 L=5.1759 --
+   n=4 it=8 L=5.1779 --
+   n=4 it=9 L=5.1788 --
+   n=5 it=0 L=4.7399 --
+   n=5 it=1 L=4.9598 --
+   n=5 it=2 L=5.0698 ok
+   n=5 it=3 L=5.0148 --
+   n=5 it=4 L=5.0423 --
+   n=5 it=5 L=5.0561 ok
+   n=5 it=6 L=5.0492 --
+   n=5 it=7 L=5.0526 ok
+   n=5 it=8 L=5.0509 ok
+   n=5 it=9 L=5.0500 ok
+  done Typical {'L1': 5.8329509733913625, 'L2': 5.410437599566787, 'L3': 5.279223781649227, 'L4': 5.179771366325478, 'L5': 5.050039455861467} 387 s
+Mid-size sedan {'A1': True, 'A2': True, 'A3': True, 'A4': True, 'A5': True, 'A6': True, 'A7': True} Lam1 6.452414678671135
+Traceback (most recent call last):
+  File "numerics/car_table.py", line 220, in <module>
+    main()
+  File "numerics/car_table.py", line 195, in main
+    L2, a0, a1, ok2 = two
+    ^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object

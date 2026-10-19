@@ -1,0 +1,9 @@
+L 5.6 g 1.3 greedy zigzag manoeuvres 2
+L 5.4 g 1.1 greedy zigzag manoeuvres 3
+L 5.2 g 0.9 greedy zigzag manoeuvres 4
+L 5.0 g 0.7 greedy zigzag manoeuvres 8
+L 4.9 g 0.6 greedy zigzag manoeuvres 14
+L 4.8 g 0.5 greedy zigzag manoeuvres None
+L 4.7 g 0.4 greedy zigzag manoeuvres None
+L 4.6 g 0.3 greedy zigzag manoeuvres None
+L 4.5 g 0.2 greedy zigzag manoeuvres None

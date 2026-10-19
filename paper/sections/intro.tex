@@ -1,0 +1,118 @@
+\section{Introduction}\label{sec:intro}
+
+Every driver who has squeezed into a tight space knows the trade-off: with one smooth reverse manoeuvre you need a generous gap, while a gap only slightly longer than your car can still be entered by shuffling back and forth many times.
+This paper quantifies the trade-off.
+For a kinematic car (front-wheel steering, fixed rear axle, bounded steering angle) we ask for the shortest gap
+\[
+  \Lmin(n)=\inf\{L:\ \text{the car can enter a gap of length $L$ using at most $n$ manoeuvres}\},
+\]
+where a \emph{manoeuvre} is a maximal stretch of motion in one direction (forward or reverse).
+
+\paragraph{The model in brief.}
+The car is a rectangle of length $\ell=d_f+d_w+d_b$ and width $w$.
+Its reference point is the midpoint of the rear axle, and that point moves along curves of curvature at most $1/R$, where $R=d_w\cot\theta$ is the minimal turning radius.
+The curb is the line $y=0$ and is a rigid obstacle for the whole car.
+The two parked cars have the same width $w$ and stand at distance $m$ from the curb, so they occupy the strip $m\le y\le H:=m+w$.
+One ends at $x=0$ and the other begins at $x=L$.
+Our car has \emph{parked} when it is collision-free and lies entirely in $0\le y\le H$, i.e.\ its outermost point is no farther out than the outer sides of the parked cars.
+Throughout, the parameters are fixed and the main application is $m=w/10$.
+Precise definitions are given in \cref{sec:model}, and \cref{fig:geometry} shows the geometry.
+
+\paragraph{Notation used below.}
+$b=d_w+d_f$ is the distance from the rear axle to the front bumper and $\Rpm=R\pm w/2$.
+Further, $\rho=\sqrt{b^2+\Rp^2}$ and $r=\sqrt{d_b^2+\Rp^2}$ are the distances from the left turning centre to the two curb-side corners.
+
+\subsection{Main results}
+
+\paragraph{One manoeuvre.}
+Driving out of a parked position is the time reversal of parking, so we may study \emph{exits}.
+In the optimal single manoeuvre the car starts from the parked position that is as far back and as far out as possible, tilted nose-up by a small angle $\psi_d$.
+It then drives forward with full left lock, and its front curb-side corner grazes the outer corner of the car in front.
+The tilt is limited by the curb: the rear overhang swings towards the curb during the turn and may just touch it.
+
+\begin{theorem}[one manoeuvre; precise version \cref{thm:one}]\label{thm:intro-one}
+Assume the mild geometric conditions of \cref{ass:one}, which hold for typical passenger cars when $m=w/10$ (\cref{app:assumptions}).
+Let $\varsigma=r-H$, $s_0^2=b^2+\Rm^2$, and let $\psi_d\in[0,\pi/2)$ solve $\Rm\cos\psi_d-b\sin\psi_d=\varsigma$.
+Then
+\begin{equation}\label{eq:Lam1}
+\begin{aligned}
+  \Lmin(1)=\Lambda_1&:=d_b\cos\psi_d-\Rm\sin\psi_d+\sqrt{\rho^2-\varsigma^2}\\
+  &=\frac{\ell\Rm \varsigma+(bd_b-\Rm^2)\sqrt{s_0^2-\varsigma^2}}{s_0^2}+\sqrt{\rho^2-\varsigma^2}.
+\end{aligned}
+\end{equation}
+\end{theorem}
+
+When the margin equals the swing $\varepsilon_b:=r-\Rp$ of the rear overhang, $\psi_d=0$ and \eqref{eq:Lam1} becomes the classical one-manoeuvre length $d_b+\sqrt{b^2+2Rw}$; the term $\sqrt{b^2+2Rw}$ is the formula usually attributed to Blackburn \cite{Blackburn}, which measures the gap from the rear axle.
+A larger margin allows a tilted final position and a slightly shorter slot.
+
+\paragraph{Many manoeuvres.}
+
+\begin{theorem}[\cref{thm:mono,thm:asym}]\label{thm:intro-asym}
+$\Lmin(n)$ is non-increasing in $n$. Under the hypotheses below it satisfies $\ell<\Lmin(n)\le\Lmin(1)$ for all $n$, and $\Lmin(n)\to\ell$.
+More precisely, for every car with $R>w/2$, $d_b\le b$, $\ell\ge2w$ and every margin $0<m\le w/2$ (a convenient special case of the hypotheses of \cref{thm:asym}),
+\[
+  \lim_{n\to\infty}\sqrt n\,\big(\Lmin(n)-\ell\big)=K,\qquad K=\sqrt{4Rw-\frac{w^3}{6R}}.
+\]
+Equivalently, a slot with slack $g=L-\ell\to0$ requires $(K^2+o(1))/g^2$ manoeuvres, and this many suffice.
+\end{theorem}
+
+The constant is remarkably universal: it involves only the turning radius and the width.
+The asymptotically optimal strategy is a sideways \emph{crawl}.
+The car bounces between the two parked cars, and each manoeuvre is an S-curve made of two full-lock arcs that lifts the car by about $g^2/(4R)$ away from the curb.
+Once the car is more than halfway out, the S-curves are slightly tilted.
+That tilt lets the overhangs pass over the parked cars and is responsible for the correction $-w^3/(6R)$.
+The matching lower bound comes from a confinement lemma together with a \emph{calibration}, a potential function whose increment bounds the lateral progress of any single manoeuvre (\cref{sec:asym}).
+
+\paragraph{Few manoeuvres.}
+Several manoeuvres pay off already for small $n$.
+As an exit, the best simple two-manoeuvre strategy first reverses with full right lock until the rear corners touch the curb and the car behind simultaneously, and then drives out with full left lock.
+This gives the closed-form bound $\Lmin(2)\le\Lambda_2$ of \cref{prop:two}.
+Starting with the front bumper against the car in front and first reversing briefly with left lock does slightly better (\cref{prop:two-better}).
+\Cref{tab:values} lists our values for a typical car.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lccccc}
+\toprule
+$n$ & $1$ & $2$ & $3$ & $4$ & $\infty$\\
+\midrule
+$\Lmin(n)$ [m], rigid curb & $5.833$ & $\le5.411$ & $\le5.280$ & $\le5.180$ & $\ell=4.300$\\
+$\Lmins(n)$ [m], soft curb & $5.809$ & $\le5.312$ & $\le5.088$ & $\le4.978$ & $\ell=4.300$\\
+\bottomrule
+\end{tabular}
+\caption{Typical car: $d_f=0.9$, $d_w=2.6$, $d_b=0.8$, $w=1.8$ (metres), $\theta=35^\circ$, margin $m=0.18$.
+Here $R=3.713$, the classical one-manoeuvre value is $5.861$, and $K=5.145$.
+For $n=1$ the values are exact, and for $n\ge2$ they come from explicit strategies (\cref{sec:several,sec:soft}) and are rounded up. Other car sizes are in \cref{tab:cars,tab:compare}.}
+\label{tab:values}
+\end{table}
+
+\paragraph{A soft curb.}
+Ordinary curbs are low enough for the bumpers to pass over them, and then only the tyres must stay on the road.
+We treat this \emph{soft-curb} variant in \cref{sec:soft} and compare the two models in \cref{sec:compare}.
+The optimal single manoeuvre keeps its shape and its closed form, with a larger admissible tilt; for the typical car it needs $5.809$ m.
+For two manoeuvres the textbook exit becomes admissible: reverse with full right lock until the rear bumper touches the car behind, then leave with full left lock.
+This exit needs $5.312$ m (\cref{prop:two-soft}).
+For two to five manoeuvres our soft-curb strategies are $10$--$20$ cm shorter than the rigid-curb ones for the typical car, and up to about $40$ cm shorter for larger cars, while the asymptotic constant $K$ is the same (\cref{prop:asym-soft}).
+
+\paragraph{Why a margin?}
+The question as usually posed requires the parked car to lie in a slot exactly as deep as the car is wide, i.e.\ flush with the curb.
+With a rigid curb that problem is degenerate: a car with positive rear overhang can never become flush with a straight wall by a finite motion, whatever the slot length and the number of manoeuvres (\cref{prop:flush}).
+The margin $m>0$ removes this degeneracy, and it is also what real parking requires.
+
+\subsection{Related work}
+The one-manoeuvre problem was popularised by Blackburn \cite{Blackburn}; up to the rear overhang, his formula is the case $m=\varepsilon_b$ of \cref{thm:intro-one}.
+Engineering studies of automatic parallel parking compute minimal slot dimensions for specific families of circular-arc paths with several trials \cite{WangEtAl,Vorobieva}.
+They observe that the required space tends to the size of the vehicle as the number of trials grows, but they do not prove optimality or rates.
+The kinematic car is the Dubins car \cite{Dubins} when it only moves forward, and the Reeds--Shepp car \cite{ReedsShepp} when reversals are allowed; the latter is a classical example of a nonholonomic system that is small-time locally controllable.
+Laumond's theorem \cite{Laumond} shows that it can follow any collision-free path approximately, which explains qualitatively why $\Lmin(n)\to\ell$.
+The contribution here is quantitative and sharp: exact values for one manoeuvre, and the exact first-order asymptotics $K/\sqrt n$.
+
+\subsection{Outline}
+\Cref{sec:model} defines the model and proves elementary properties.
+\Cref{sec:toolkit} collects the geometric tools: turning centres, the drift of the centres, and a distance identity.
+\Cref{sec:one} proves \cref{thm:one} and discusses the zero-margin degeneracy.
+\Cref{sec:several} treats few manoeuvres, and \cref{sec:asym} proves the asymptotic theorem.
+\Cref{sec:soft} treats the soft curb, and \cref{sec:compare} compares the two models.
+\Cref{sec:lean} describes the formal verification in Lean.
+\Cref{sec:discussion} discusses variants and open problems.
+The appendix records the verification of the geometric assumptions, values for other cars, five- and twenty-manoeuvre parking motions with a rigid and with a soft curb, our numerical methods, and a disclosure of how an LLM was used.

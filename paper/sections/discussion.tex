@@ -1,0 +1,48 @@
+\section{Discussion}\label{sec:discussion}
+
+\paragraph{Summary.}
+For a slot bounded by a rigid curb and two parked cars standing at a margin $m$ from it, we have the following (for a soft curb see \cref{sec:compare}).
+\begin{itemize}[nosep]
+\item $\Lmin(1)$ is given exactly by \eqref{eq:Lam1}.
+\item Two manoeuvres reduce the required length substantially.
+\item The required slack decays like $K/\sqrt n$, with the universal constant $K=\sqrt{4Rw-w^3/(6R)}$.
+\end{itemize}
+In practical terms the asymptotics are discouraging: halving the slack quadruples the number of manoeuvres.
+At $g=0.1$ m the leading-order count $K^2/g^2$ is about $2650$, and our simulated crawl uses $2507$ manoeuvres.
+The regime of few manoeuvres is governed by a different mechanism (rotation zigzags) and is far more efficient per manoeuvre.
+
+\paragraph{Rotation versus crawling.}
+For moderate slack the car can turn nose-up a little at every manoeuvre.
+Each reverse arc lowers the escape length $V$ of \cref{sec:several} until a final forward exit is possible.
+For small slack the confinement lemma forbids turning, and the only way out is to crawl sideways by S-curves.
+The crawl gains about $g^2/(4R)$ of lateral clearance per manoeuvre.
+This lift does not depend on the overhangs, which is why $K$ involves only $R$ and $w$.
+The correction $-w^3/(6R)$ comes from the tilted crawl once the car is more than halfway out.
+Then the lane-side corners overhang the parked cars, and the effective window becomes a slanted parallelogram.
+
+\paragraph{The role of the margin.}
+With $m=0$ the problem as originally posed is degenerate (\cref{prop:flush}).
+For $m\ge\varepsilon_b$ the one-manoeuvre answer depends on $m$ only through the tilt $\psi_d$.
+The many-manoeuvre constant $K$ does not depend on $m$ at all.
+If $0<m<\varepsilon_b$, a full-lock exit from any parked position would drive the rear corner into the curb.
+We expect that the optimal single manoeuvre then contains a \emph{curb-sliding} arc of intermediate curvature and that $\Lmin(1)$ exceeds the classical value, but we have not proved this.
+
+\paragraph{Variants.}
+\begin{itemize}[nosep]
+\item \emph{Parked cars of a different width.} The parked cars enter the analysis through the corners $\Qr,\Qf$ and the band $(m,H)$, and the proofs use $H-m=w$ throughout (for instance in the height variable $u\in[0,w]$ and in the windows of \cref{sec:asym}).
+For parked cars of another width the windows change, and so does the constant $K$; we have not worked this out.
+\item \emph{Soft curb.} This variant is treated in \cref{sec:soft,sec:compare}.
+Its tyre model is deliberately simple: plan-view rectangles aligned with the car.
+Our motions remain free when the front tyres are steered and when the tyres are enlarged within the range of \cref{sec:compare}.
+The model ignores the height of the curb and of the overhangs, and anything behind the curb.
+If the body may pass only a given distance beyond the curb, the problem lies between the two models; we have not treated it.
+\end{itemize}
+
+\paragraph{Open problems.}
+\begin{enumerate}[nosep]
+\item Determine $\Lmin(n)$ exactly for $n\ge2$.
+Our numerical searches suggest that the optimal two-manoeuvre exit first reverses briefly with \emph{left} lock and then with right lock (\cref{conj:two}).
+\item Find the second-order term of the asymptotics; simulations suggest $g^2N(g)=K^2-c_1g+o(g)$.
+\item Characterise the crossover between rotation zigzags and crawling as a function of $n$.
+\item Prove that $\Lambda_2^{\rm s}$ is optimal for two manoeuvres with a soft curb; our searches within the zigzag family did not find a shorter two-manoeuvre exit.
+\end{enumerate}

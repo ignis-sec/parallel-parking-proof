@@ -1,0 +1,51 @@
+City car n=1           L=4.8948: free True, steered front tyres True, large tyres   - , lowest tyre point   0.0 cm, lowest body point  -5.8 cm
+City car n=2           L=4.4705: free True, steered front tyres True, large tyres True, lowest tyre point   6.7 cm, lowest body point  -3.1 cm
+City car n=3           L=4.2769: free True, steered front tyres True, large tyres True, lowest tyre point  11.3 cm, lowest body point  -1.0 cm
+City car n=4           L=4.1882: free True, steered front tyres True, large tyres True, lowest tyre point  11.8 cm, lowest body point  -1.8 cm
+City car n=5           L=4.1279: free True, steered front tyres True, large tyres True, lowest tyre point  13.2 cm, lowest body point   0.4 cm
+Compact n=1            L=5.6640: free True, steered front tyres True, large tyres   - , lowest tyre point  -0.0 cm, lowest body point  -8.3 cm
+Compact n=2            L=5.1854: free True, steered front tyres True, large tyres True, lowest tyre point   8.0 cm, lowest body point  -5.9 cm
+Compact n=3            L=4.9705: free True, steered front tyres True, large tyres True, lowest tyre point  12.4 cm, lowest body point  -5.5 cm
+Compact n=4            L=4.8720: free True, steered front tyres True, large tyres True, lowest tyre point  12.9 cm, lowest body point  -7.0 cm
+Compact n=5            L=4.8149: free True, steered front tyres True, large tyres True, lowest tyre point  14.7 cm, lowest body point  -5.1 cm
+Typical n=1            L=5.8088: free True, steered front tyres True, large tyres   - , lowest tyre point  -0.0 cm, lowest body point  -9.0 cm
+Typical n=2            L=5.3118: free True, steered front tyres True, large tyres True, lowest tyre point   8.0 cm, lowest body point  -7.0 cm
+Typical n=3            L=5.0875: free True, steered front tyres True, large tyres True, lowest tyre point  12.4 cm, lowest body point  -7.0 cm
+Typical n=4            L=4.9771: free True, steered front tyres True, large tyres True, lowest tyre point  13.0 cm, lowest body point  -8.7 cm
+Typical n=5            L=4.9051: free True, steered front tyres True, large tyres True, lowest tyre point  14.8 cm, lowest body point  -7.1 cm
+Mid-size sedan n=1     L=6.4190: free True, steered front tyres True, large tyres   - , lowest tyre point  -0.0 cm, lowest body point -11.8 cm
+Mid-size sedan n=2     L=5.8655: free True, steered front tyres True, large tyres True, lowest tyre point   8.3 cm, lowest body point -10.2 cm
+Mid-size sedan n=3     L=5.6206: free True, steered front tyres True, large tyres True, lowest tyre point  12.2 cm, lowest body point -12.0 cm
+Mid-size sedan n=4     L=5.5068: free True, steered front tyres True, large tyres True, lowest tyre point  13.1 cm, lowest body point -13.8 cm
+Mid-size sedan n=5     L=5.4323: free True, steered front tyres True, large tyres True, lowest tyre point  15.1 cm, lowest body point -13.5 cm
+Large SUV n=1          L=6.8404: free True, steered front tyres True, large tyres   - , lowest tyre point   0.0 cm, lowest body point -12.0 cm
+Large SUV n=2          L=6.2303: free True, steered front tyres True, large tyres True, lowest tyre point   8.6 cm, lowest body point -11.2 cm
+Large SUV n=3          L=5.9589: free True, steered front tyres True, large tyres True, lowest tyre point  13.1 cm, lowest body point -12.9 cm
+Large SUV n=4          L=5.8302: free True, steered front tyres True, large tyres True, lowest tyre point  14.1 cm, lowest body point -15.2 cm
+Large SUV n=5          L=5.7578: free True, steered front tyres True, large tyres True, lowest tyre point  16.3 cm, lowest body point -13.7 cm
+Van n=1                L=7.5034: free True, steered front tyres True, large tyres   - , lowest tyre point   0.0 cm, lowest body point -11.3 cm
+Van n=2                L=6.7932: free True, steered front tyres True, large tyres True, lowest tyre point   8.6 cm, lowest body point -10.9 cm
+Van n=3                L=6.4799: free True, steered front tyres True, large tyres True, lowest tyre point  12.4 cm, lowest body point -13.2 cm
+Van n=4                L=6.3297: free True, steered front tyres True, large tyres True, lowest tyre point  13.5 cm, lowest body point -15.2 cm
+Van n=5                L=6.2527: free True, steered front tyres True, large tyres True, lowest tyre point  16.1 cm, lowest body point -14.0 cm
+Typical n=20           L=4.7032: free True, steered front tyres True, large tyres True, lowest tyre point  16.3 cm, lowest body point  -5.2 cm
+all checks passed
+  exit manoeuvre  1 (rev): heading   5.1 deg, contacts ['RL@rear car']
+  exit manoeuvre  2 (fwd): heading   8.6 deg, contacts ['FC@front car']
+  exit manoeuvre  3 (rev): heading  11.0 deg, contacts ['RL@rear car']
+  exit manoeuvre  4 (fwd): heading  13.1 deg, contacts ['FC@front car']
+  exit manoeuvre  5 (rev): heading  14.5 deg, contacts ['RL@rear car']
+  exit manoeuvre  6 (fwd): heading  16.0 deg, contacts ['FC@front car']
+  exit manoeuvre  7 (rev): heading  17.0 deg, contacts ['RL@rear car']
+  exit manoeuvre  8 (fwd): heading  18.1 deg, contacts ['FC@front car']
+  exit manoeuvre  9 (rev): heading  18.9 deg, contacts ['RL@rear car']
+  exit manoeuvre 10 (fwd): heading  19.8 deg, contacts ['FC@front car']
+  exit manoeuvre 11 (rev): heading  20.5 deg, contacts ['RL@rear car']
+  exit manoeuvre 12 (fwd): heading  21.3 deg, contacts ['FC@front car']
+  exit manoeuvre 13 (rev): heading  22.0 deg, contacts ['RL@rear car']
+  exit manoeuvre 14 (fwd): heading  22.8 deg, contacts ['FC@front car']
+  exit manoeuvre 15 (rev): heading  23.4 deg, contacts ['RL@rear car']
+  exit manoeuvre 16 (fwd): heading  24.2 deg, contacts ['FC@front car']
+  exit manoeuvre 17 (rev): heading  24.9 deg, contacts ['RL@rear car']
+  exit manoeuvre 18 (fwd): heading  25.8 deg, contacts ['FC@front car']
+  exit manoeuvre 19 (rev): heading  26.6 deg, contacts ['RL@rear car']

@@ -1,0 +1,23 @@
+\begin{abstract}
+A car with front-wheel steering and a fixed rear axle is modelled as a rectangle with front overhang $d_f$, wheelbase $d_w$, rear overhang $d_b$, width $w$ and maximal steering angle $\theta$, moving along curves of curvature at most $1/R$ with $R=d_w\cot\theta$.
+It has to park between two parked cars of the same width, which stand at distance $m$ from a straight curb ($m=w/10$ in the main application).
+The car has parked once it does not overlap the curb or the parked cars and its outermost point is no farther from the curb than the outer sides of the parked cars.
+A \emph{manoeuvre} is a maximal stretch of motion in one direction.
+We study the infimal slot length $\Lmin(n)$ that allows parking with at most $n$ manoeuvres.
+
+For one manoeuvre we derive $\Lmin(1)$ in closed form (\cref{thm:one}).
+The optimal car finishes slightly nose-up, tilted by the largest angle for which the rear overhang, swinging towards the curb during the turn, does not cut into it.
+When the margin equals the swing of the rear overhang, the formula reduces to the classical value $d_b+\sqrt{(d_w+d_f)^2+2Rw}$.
+For general $n$ we prove that $\Lmin(n)$ is non-increasing, exceeds the car length $\ell=d_f+d_w+d_b$ for every $n$, and converges to $\ell$.
+The convergence rate is sharp:
+\[
+  \Lmin(n)=\ell+\frac{K}{\sqrt n}+o\big(n^{-1/2}\big),\qquad K^2=4Rw-\frac{w^3}{6R},
+\]
+and $K$ depends neither on the overhangs nor on the margin (\cref{thm:asym}).
+The proof combines a confinement lemma, a calibration (potential-function) inequality in rescaled variables, and an explicit asymptotically optimal ``crawling'' strategy built from tilted S-shaped manoeuvres.
+For a small number of manoeuvres we give explicit strategies, including a closed-form two-manoeuvre upper bound, and numerical values.
+We also show that the idealised problem with zero margin is degenerate: a car with positive rear overhang can never be brought flush against a rigid curb by a finite motion, so no finite slot length suffices for any $n$.
+Finally we treat a \emph{soft curb}, over which the bodywork may pass while the tyres must stay on the road.
+The one-manoeuvre length is again given in closed form and is only a few centimetres shorter. For two to five manoeuvres our soft-curb strategies are up to $40$~cm shorter, depending on the car, and the asymptotic constant $K$ is unchanged.
+The model, the zero-margin degeneracy, the monotonicity in $n$ and the one-manoeuvre theorem are formally verified in Lean~4 with Mathlib. For the asymptotic theorem, the formal proof derives the statements about $\Lmin(n)$ from the two propositions bounding the number of manoeuvres, which enter as explicit hypotheses.
+\end{abstract}

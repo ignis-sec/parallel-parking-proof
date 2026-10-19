@@ -1,0 +1,115 @@
+\section{Geometric tools}\label{sec:toolkit}
+
+\subsection{Turning centres}
+The \emph{left} and \emph{right turning centres} of a configuration $q=(P,\psi)$ are
+\[
+  C=P+R\,\n(\psi),\qquad C'=P-R\,\n(\psi).
+\]
+Under full left (right) lock the car rotates rigidly about $C$ ($C'$).
+
+\begin{lemma}[drift of the centres]\label{lem:drift}
+Along a manoeuvre of direction $d$, $C$ and $C'$ are Lipschitz, and for almost every $s$
+\[
+  \frac{\dd C}{\dd s}=(d-R\psi')\,\e(\psi),\qquad \frac{\dd C'}{\dd s}=(d+R\psi')\,\e(\psi).
+\]
+Since $|R\psi'|\le1$, the left centre moves along $d\,\e(\psi)$ with speed $|d-R\psi'|\in[0,2]$.
+It stands still exactly when the car turns with full left lock ($\psi'=d/R$) and moves at speed $2$ under full right lock.
+The analogous statements hold for $C'$.
+\end{lemma}
+\begin{proof}
+$\frac{\dd}{\dd s}\n(\psi)=-\psi'\e(\psi)$ and $P'=d\,\e(\psi)$.
+\end{proof}
+
+\begin{lemma}[corners in polar form]\label{lem:polar}
+Let $\gamma\in(0,\pi/2)$ and $\beta\in(0,\pi/2)$ be given by $(\cos\gamma,\sin\gamma)=(b,\Rp)/\rho$ and $(\cos\beta,\sin\beta)=(\Rp,d_b)/r$.
+Then
+\[
+  \cFC=C+\rho\,\e(\psi-\gamma),\quad \cRC=C+r\,\e\big(\psi-\tfrac\pi2-\beta\big),\quad
+  \cFL=C'+\rho\,\e(\psi+\gamma),\quad \cRL=C'+r\,\e\big(\psi+\tfrac\pi2+\beta\big).
+\]
+Moreover $|\cFL-C|=\sqrt{b^2+\Rm^2}<\rho$ and $|\cRL-C|=\sqrt{d_b^2+\Rm^2}<r$.
+In particular
+\begin{equation}\label{eq:RCy}
+  \cRC_y=C_y-r\cos(\psi-\beta),\qquad \cFC_y=C_y+\rho\sin(\psi-\gamma).
+\end{equation}
+\end{lemma}
+\begin{proof}
+$\cFC-C=b\,\e-\Rp\,\n$, and $\e(\psi-\gamma)=\cos\gamma\,\e(\psi)-\sin\gamma\,\n(\psi)$.
+The other identities are checked in the same way.
+\end{proof}
+
+\begin{lemma}[disk containment]\label{lem:disk}
+If $d_b\le b$, the footprint $\fp(q)$ is contained in the closed disk of radius $\rho$ about $C$.
+If $d_b<b$, the corner $\cFC$ is its only point on the boundary circle.
+\end{lemma}
+\begin{proof}
+The footprint is the convex hull of its corners, the disk is convex, and by \cref{lem:polar} the corners have distances $\rho,r,\sqrt{b^2+\Rm^2},\sqrt{d_b^2+\Rm^2}$ from $C$.
+These are at most $\rho$, with equality only for $\cFC$ when $d_b<b$; the farthest points of a convex polygon from a point are vertices.
+\end{proof}
+
+\subsection{The distance identity}
+The next identity is our main tool.
+It says that the left centre does not move away from any point lying ahead of the rear axle when the car moves forward, nor from any point behind the rear axle when it reverses.
+
+\begin{lemma}[distance identity]\label{lem:distance}
+Let $Q\in\R^2$ be fixed.
+Along a manoeuvre of direction $d$, for almost every $s$,
+\[
+  \frac{\dd}{\dd s}|C-Q|^2=-2\,(d-R\psi')\,(Q-P)\cdot\e(\psi).
+\]
+In particular, for a forward manoeuvre $|C-Q|$ is non-increasing on every interval on which $(Q-P)\cdot\e(\psi)\ge0$, and for a reverse manoeuvre on every interval on which $(Q-P)\cdot\e(\psi)\le0$.
+\end{lemma}
+\begin{proof}
+By \cref{lem:drift}, $\frac{\dd}{\dd s}|C-Q|^2=2(d-R\psi')(C-Q)\cdot\e$.
+Moreover $(C-Q)\cdot\e=(P-Q)\cdot\e$ because $\n\cdot\e=0$.
+Finally $d-R\psi'$ has the sign of $d$ or vanishes.
+\end{proof}
+
+\subsection{Full-lock arcs}
+Under forward full left lock ($\psi'=1/R$) the centre $C$ is fixed and $\psi(s)=\psi(0)+s/R$.
+Every body point therefore rotates counter-clockwise about $C$ on a circle, through the angle $\psi(s)-\psi(0)$.
+Under reverse full right lock the car rotates counter-clockwise about the fixed $C'$.
+Reverse full left lock and forward full right lock are clockwise rotations about $C$ and $C'$ respectively.
+
+\subsection{Bounds for parked configurations}
+Put
+\[
+  X(\psi)=d_b\cos\psi-\Rm\sin\psi,\qquad Y(\psi)=\Rm\cos\psi-b\sin\psi .
+\]
+
+\begin{lemma}\label{lem:parked}
+Assume $H<\ell$ and $\cos\psi_{\rm fit}>m/w$, and let $q$ be parked with $|\psi|\le\psi_{\rm fit}$.
+\begin{enumerate}[label=(\alph*)]
+\item If $\psi\ge0$, then $P_x\ge d_b\cos\psi+\tfrac w2\sin\psi$ and $d_b\sin\psi+\tfrac w2\cos\psi\le P_y\le H-b\sin\psi-\tfrac w2\cos\psi$.
+Hence
+\[
+  C_x\ge X(\psi),\qquad \Rp\cos\psi\le C_y\le H+Y(\psi).
+\]
+\item If $\psi<0$, then $P_x\ge d_b\cos\psi-\tfrac w2|\sin\psi|$; hence $C_x\ge d_b\cos\psi+\Rm|\sin\psi|$, $C'_x\ge d_b\cos\psi-\Rp|\sin\psi|$ and $\Rp\cos\psi\le C_y\le H+\Rm\cos\psi-d_b|\sin\psi|$.
+\item The front of the car satisfies $\cFC_x\le L+m\tan|\psi|$ and $\cFL_x\le L$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) The lowest point is $\cRC$, so $\cRC_y\ge0$.
+The highest point is $\cFL$, so $\cFL_y\le H$.
+These two inequalities give the bounds on $P_y$.
+Next, $\cRL_y=\cRC_y+w\cos\psi\ge w\cos\psi>m$ and $\cRL_y\le H$.
+Points of the rear edge close to $\cRL$ therefore have heights in $(m,H)$ and lie outside $\Or$, so their $x$-coordinates are $\ge0$; by continuity $\cRL_x\ge0$.
+Since $\cRL_x=P_x-d_b\cos\psi-\tfrac w2\sin\psi$, this is the bound on $P_x$.
+The bounds on $C=P+R\n(\psi)$ follow.
+
+(b) Now the highest point is $\cRL$, so $\cRL_y\le H$, which gives the upper bound on $C_y$.
+The point $P-\tfrac w2\n$ of the footprint lies above the curb, so $P_y\ge\tfrac w2\cos\psi$ and $C_y=P_y+R\cos\psi\ge\Rp\cos\psi$.
+As in (a), $\cRL_y\ge\cRC_y+w\cos\psi\ge w\cos\psi>m$ (here $\cRC_y\ge\cFC_y\ge0$), so $\cRL$ lies in the band or on its upper boundary and $\cRL_x\ge0$.
+Since $\cRL=P-d_b\e+\tfrac w2\n$, this reads $P_x\ge d_b\cos\psi-\tfrac w2|\sin\psi|$, and the bounds on $C_x=P_x+R|\sin\psi|$ and $C'_x=P_x-R|\sin\psi|$ follow.
+
+(c) The front edge runs from $\cFC$ to $\cFL=\cFC+w\,\n(\psi)$.
+We have $\cFL_y\le H$, because the footprint lies below $H$.
+Also $\cFL_y=\cFC_y+w\cos\psi\ge w\cos\psi>m$, using $\cFC_y\ge0$ and $\cos\psi\ge\cos\psi_{\rm fit}>m/w$.
+Hence $\cFL$ lies in the band (or on its upper boundary), and by continuity $\cFL_x\le L$.
+If $\psi\le0$, then $\cFC_x=\cFL_x-w|\sin\psi|\le L$.
+If $\psi>0$ and $\cFC_y>m$, then $\cFC$ lies in the band and $\cFC_x\le L$.
+If $\psi>0$ and $\cFC_y\le m$, the front edge meets the height $m$ at the point $\cFC+t\,\n(\psi)$ with $t=(m-\cFC_y)/\cos\psi$.
+Points of the edge just above it lie in the band, so this point has $x\le L$, i.e.\ $\cFC_x-t\sin\psi\le L$.
+Since $t\le m/\cos\psi$, this gives $\cFC_x\le L+m\tan\psi$.
+\end{proof}

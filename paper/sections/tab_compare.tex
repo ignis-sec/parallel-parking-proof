@@ -1,0 +1,30 @@
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+car & curb & $n=1$ & $n=2$ & $n=3$ & $n=4$ & $n=5$\\
+\midrule
+City car & rigid & 4.910 & 4.517 & 4.311 & 4.222 & 4.132\\
+ & soft & 4.895 & 4.471 & 4.277 & 4.189 & 4.128\\
+\addlinespace[2pt]
+Compact & rigid & 5.686 & 5.271 & 5.126 & 5.024 & 4.911\\
+ & soft & 5.664 & 5.186 & 4.971 & 4.872 & 4.815\\
+\addlinespace[2pt]
+Typical & rigid & 5.833 & 5.411 & 5.280 & 5.180 & 5.050\\
+ & soft & 5.809 & 5.312 & 5.088 & 4.978 & 4.906\\
+\addlinespace[2pt]
+Mid-size sedan & rigid & 6.452 & 6.052 & 5.926 & 5.844 & 5.744\\
+ & soft & 6.419 & 5.866 & 5.621 & 5.507 & 5.433\\
+\addlinespace[2pt]
+Large SUV & rigid & 6.877 & 6.393 & 6.288 & 6.187 & 6.069\\
+ & soft & 6.840 & 6.231 & 5.959 & 5.831 & 5.758\\
+\addlinespace[2pt]
+Van & rigid & 7.543 & 6.969 & 6.850 & 6.734 & 6.597\\
+ & soft & 7.503 & 6.794 & 6.480 & 6.330 & 6.253\\
+\bottomrule
+\end{tabular}
+\caption{Slot lengths (in metres) with a rigid curb (\cref{tab:cars}) and with a soft curb, for margin $m=w/10$ and the tyre data of \cref{sec:model-soft}.
+For $n=1$ the values are exact (\cref{thm:one,thm:one-soft}; for the city car the soft value is numerical).
+For $n=2$ the soft values are $\Lambda_2^{\rm s}$ of \cref{prop:two-soft}; all entries with $n\ge2$ are upper bounds.}
+\label{tab:compare}
+\end{table}
